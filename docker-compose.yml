@@ -1,0 +1,36 @@
+version: "2"
+services:
+  nginx:
+      image: 'bitnami/nginx'
+      ports:
+          - '80:80'
+      links:
+          - phpfpm
+      volumes:
+          - ./logs/access.log:/opt/bitnami/nginx/logs/access.log
+          - ./logs/error.log:/opt/bitnami/nginx/logs/error.log
+          - ./nginx/app.conf:/bitnami/nginx/conf/vhosts/app.conf
+          - ./public:/var/www/public
+  phpfpm:
+      build: ./docker/php
+      ports:
+          - '9001:9000'
+      volumes:
+          - ./public:/var/www/public
+      depends_on:
+          - mysql
+  mysql:
+    image: 'mysql:5.7'
+    volumes:
+        - ./db-data:/var/lib/mysql
+    ports:
+        - '3306:3306'
+    restart: always
+    environment:
+       MYSQL_ROOT_PASSWORD: 123456
+       MYSQL_DATABASE: demp
+       MYSQL_USER: demp
+       MYSQL_PASSWORD: 123456
+
+volumes:
+    db_data:
