@@ -70,5 +70,9 @@ xdebug.remote_host={{SEU IP LOCAL}}
 No geral as configurações do para seu ambiente Docker são essas, agora o que precisa ser feito para depurar suas aplicações que estão rodando dentro do container e realizar a configuração.
 
 ### Configurando sua IDE
-- Visual Studio Vode
-- PHPStorm
+- [Visual Studio Code]
+- [PHPStorm]
+
+
+[Visual Studio Code]: <https://github.com/nicolastakashi/demp/wiki/Visual-Studio-Code>
+[PHPStorm]: <https://github.com/nicolastakashi/demp/wiki/PHPStorm>
